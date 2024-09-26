@@ -10,6 +10,7 @@ import Foundation
 
 struct User: Codable {
     let id: String
+    let isActive: Bool
     let name: String
     let age: Int
     let company: String

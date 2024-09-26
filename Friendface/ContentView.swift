@@ -13,7 +13,21 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(users, id: \.id) { user in
-                Text(user.name)
+                NavigationLink {
+                    UserView(user: user)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(user.name)
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                        
+                        Text(user.isActive == true ? "Online" : "Offline")
+                            .foregroundStyle(user.isActive == true ? .green : .red)
+                            .fontWeight(.medium)
+                            .font(.subheadline)
+                    }
+                }
+
             }
             .navigationTitle("Friendface")
             .toolbar {
